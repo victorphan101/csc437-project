@@ -1,4 +1,4 @@
-# Examples for CSC 437
+# CSC 437 NBA App
 
 > _NOTE:_ The `main` branch of this repo is a work in progress
 > as I am working on the Web Component aspect and building up from the Concept Map
