@@ -1,0 +1,50 @@
+.mvp__odds__section{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    grid-row-gap: 10px;
+}
+
+.mvp__rows{
+    display: flex;
+    justify-content: center;
+    padding: 5rem;
+}
+
+.mvp__item{
+    background: #D2B48C;
+    margin: 2rem;
+    width: 33%;
+    height: 100%;
+    background: #fff;
+    padding: 1rem;
+    transition: 1s ease-in-out;
+    border-radius: 1rem;
+}
+
+.player__image{
+    height: 100%;
+    width: 100%;
+    margin: var(--mb-1);
+    border-radius: 50%;
+    background: linear-gradient(to right,#ff3b3b, #fff, #3158f5);
+}
+
+.player__position{
+    text-align: center;
+    font-size: 20px;
+    margin: 2rem 0;
+}
+
+.player__stats{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: var(--pad-1);
+    text-align: center;
+    grid-row-gap: 10px;
+    justify-content: space-evenly;
+}
+
+.player__name{
+    text-align: center;
+}

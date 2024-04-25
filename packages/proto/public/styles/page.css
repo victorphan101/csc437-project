@@ -1,0 +1,58 @@
+/*Menu Options*/
+.navbar{
+  display: flex;
+  background: var(--container-color);
+  height: var(--big-font-size);
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.navbar__container{
+  display: flex;
+  justify-content: space-between;
+}
+.title{
+  display: flex;
+  align-items:center;
+  margin: 4rem;
+  font-size: var(--h1-font-size);;
+  background: linear-gradient(to top,#ff3b3b, #3158f5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-decoration: none;
+  font-style:italic;
+}
+.nav__list{
+  display: flex;
+  align-items: center;
+  list-style:none;
+}
+.nav__tab{
+  color: #131313;
+  padding-top: 20px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 20px;
+  text-decoration: none;
+  border-radius:1rem;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.nav__tab.active{
+  background:#e0e0e0;
+  color: #3158f5;
+}
+.nav__tab:hover{
+  color: #3158f5;
+  background: #e0e0e0;
+  border-radius:1rem;
+  transition: all 0.3s ease;
+}
+
+.nba__court{
+  width:100%;
+  height: 500px;
+}
