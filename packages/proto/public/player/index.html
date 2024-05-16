@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--Player Profile View Template-->
+        <player-profile src="/api/players/">
+            <span slot="name">LeBron James</span>
+            <img slot="avatar" src="../assets/lebron__spotlight.png" />
+            <span slot="team">LA Lakers</span>
+            <span slot="position">SF</span>
+            <span slot="height">6'8</span>
+        </player-profile>
+
+        <!--REST Form for Player-->
+        <restful-form slot="form" src="/api/players/">
+            <label>
+              <span>Player ID</span>
+              <input name="playerid" disabled />
+            </label>
+            <label>
+              <span>Player Name</span>
+              <input name="name" />
+            </label>
+            <label>
+              <span>Height</span>
+              <input name="height" />
+            </label>
+            <label>
+              <span>Position</span>
+              <input name="position" />
+            </label>
+            <label>
+              <span>Team</span>
+              <input name="team">
+            </label>
+            <label>
+              <span>Team Color</span>
+              <input type="color" name="team color" />
+            </label>
+            <button
+              slot="delete"
+              onclick="relayEvent(event,'restful-form:delete')"
+              >Delete this Player</button
+            >
+          </restful-form>
+            <json-object src="/api/players/">
+                <a href="#" onclick="relayEvent(event, 'json-object:open')">
+                    NBA Players
+                </a>
+              </json-object>
+            <style>
+              form {
+                display: grid;
+              }
+            </style>
+          </template>
+    </body>
+</html>
