@@ -1,4 +1,6 @@
 import { prepareTemplate } from "./template.js";
+import { Auth, Observer } from "@calpoly/mustang";
+
 
 export class PlayerProfileElement extends HTMLElement {
   static styles = `
@@ -72,14 +74,29 @@ export class PlayerProfileElement extends HTMLElement {
     this.editButton.addEventListener("click", this.showEditForm.bind(this));
   }
 
+  _authObserver = new Observer(this, "sports:auth");
+
   get src() {
     return this.getAttribute("src");
   }
 
+  get authorization() {
+    console.log("Authorization for user, ", this._user);
+    return (
+      this._user?.authenticated && {
+        Authorization: `Bearer ${this._user.token}`
+      }
+    );
+  }
+
   connectedCallback() {
-    if (this.src) {
-      loadJSON(this.src, this, renderSlots);
-    }
+    this._authObserver.observe(({ user }) => {
+        this._user = user;
+    
+        if (this.src) {
+          loadJSON(this.src, this, renderSlots, this.authorization );
+        }
+      });
   }
 
   showEditForm() {

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+        <script type="importmap">
+            {
+              "imports": {
+                "@calpoly/mustang": "/node_modules/@calpoly/mustang/dist/mustang.mjs"
+              }
+            }
+          </script>
+          <script type="module">
+            import { define, Auth } from "@calpoly/mustang";
+          
+            define({ "mu-auth": Auth.Provider });
+          </script>
+          <script type="module" src="/js/login-form.js"></script>
+
+    </head>
+    <body>
+        <mu-auth>
+            <h2>User Login</h2>
+            <main class="card">
+              <login-form>
+                <label>
+                  <span>Username:</span>
+                  <input name="username" autocomplete="off" />
+                </label>
+                <label>
+                  <span>Password:</span>
+                  <input type="password" name="password" />
+                </label>
+              </login-form>
+            </main>
+            <p>
+              Or did you want to
+              <a href="./newuser.html">Sign up as a new user</a>
+              ?
+            </p>
+          </mu-auth>
+
+          <a
+  href="#"
+  onclick="relayEvent(event, 'auth:message', ['auth/signout'])">
+  Sign out
+</a>
+        
+    </body>
+</html>

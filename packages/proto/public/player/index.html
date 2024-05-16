@@ -7,6 +7,26 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+
+        <script type="module">
+            import { define, Auth } from "@calpoly/mustang";
+          
+            define({ "mu-auth": Auth.Provider });
+        </script>
+
+        <script type="importmap">
+            {
+              "imports": {
+                "@calpoly/mustang": "/node_modules/@calpoly/mustang/dist/mustang.mjs"
+              }
+            }
+          </script>
+          <script type="module">
+            import { define, Auth } from "@calpoly/mustang";
+          
+            define({ "mu-auth": Auth.Provider });
+          </script>
+          <script type="module" src="/js/login-form.js"></script>
     </head>
     <body>
         <!--Player Profile View Template-->
@@ -17,6 +37,13 @@
             <span slot="position">SF</span>
             <span slot="height">6'8</span>
         </player-profile>
+
+        <mu-auth provides="sports:auth" redirect="../login.html">
+            <sports-header></sports-header>
+            <main>
+              <profile-view src="/api/players/"></profile-view>
+            </main>
+        </mu-auth>
 
         <!--REST Form for Player-->
         <restful-form slot="form" src="/api/players/">

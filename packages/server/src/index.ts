@@ -1,7 +1,9 @@
 // src/index.ts
 import express, { Request, Response } from "express";
 import players from "./routes/players";
+import path from "path";
 import { connect } from "./services/mongo";
+import auth, { authenticateUser } from "./routes/auth";
 
 connect("sports");
 
@@ -12,9 +14,9 @@ const staticDir = process.env.STATIC || "public";
 
 app.use(express.static(staticDir));
 app.use(express.json());
+app.use("/auth", auth);
 
-
-app.use("/api/players", players);
+app.use("/api/players", authenticateUser, players);
 
 
 app.get("/hello", (_: Request, res: Response) => {
@@ -29,3 +31,10 @@ app.get("/hello", (_: Request, res: Response) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
+const nodeModules = path.resolve(
+  __dirname,
+  "../../../node_modules"
+);
+console.log("Serving NPM packages from", nodeModules);
+app.use("/node_modules", express.static(nodeModules));
