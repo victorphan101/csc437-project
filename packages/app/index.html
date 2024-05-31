@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="styles/player__spotlight.css" />
         <link rel="stylesheet" href="styles/mvp.css" />
         <!--<script type="module" src="script.js"></script>-->
-        <script type="module" src="/js/team-assortment.js"></script>
+        <!--<script type="module" src="/js/team-assortment.js"></script>-->
         <script type="module">
             import { relayEvent } from "/js/relay-event.js";
       
@@ -34,10 +34,22 @@
           <!--JSON Object-->
           <script type="module" src="/js/json-loader.js"></script>
 
+          <script type="module">
+            import { define, Auth } from "@calpoly/mustang";
+            import {SportHeaderElement} from "/src/components/sport-header";
+          
+            define({ 
+              "mu-auth": Auth.Provider,
+              "sport-header": SportHeaderElement
+            });
+            window.relayEvent = Events.relay;
+          </script>
+
     </head>
     <body>
-
-        <LoginFormElement></LoginFormElement>
+      <mu-auth provides="sport:auth" redirect="./login.html">
+        <!--<LoginFormElement></LoginFormElement>-->
+        <sport-header></sport-header>
         <nav class="navbar">
             <div class="navbar__container">
               <a href="#home" class="title">NBA Odds</a>
@@ -114,6 +126,6 @@
         
 
 
-
+        </mu-auth>
     </body>
 </html>
