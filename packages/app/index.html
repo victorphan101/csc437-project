@@ -1,131 +1,61 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles/page.css" />
-        <link rel="stylesheet" href="styles/reset.css" />
-        <link rel="stylesheet" href="styles/token.css" />
-        <link rel="stylesheet" href="styles/player__spotlight.css" />
-        <link rel="stylesheet" href="styles/mvp.css" />
-        <!--<script type="module" src="script.js"></script>-->
-        <!--<script type="module" src="/js/team-assortment.js"></script>-->
-        <script type="module">
-            import { relayEvent } from "/js/relay-event.js";
-      
-            window.relayEvent = relayEvent;
-          </script>
-        <script type="module">
-            function toggleDarkMode(page, checked) {
-              page.classList.toggle("dark-mode", checked);
-            }
-      
-            document.body.addEventListener("dark-mode", (event) =>
-              toggleDarkMode(
-                event.currentTarget,
-                event.detail.checked
-              )
-            );
-          </script>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles/page.css" />
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/token.css" />
+    <link rel="stylesheet" href="styles/player__spotlight.css" />
+    <link rel="stylesheet" href="styles/mvp.css" />
+    <!--<script type="module" src="script.js"></script>-->
+    <!--<script type="module" src="/js/team-assortment.js"></script>-->
 
-          <!--JSON Object-->
-          <script type="module" src="/js/json-loader.js"></script>
+    <!--Main TS file-->
+    <script type="module" src="/src/main"></script>
 
-          <script type="module">
-            import { define, Auth } from "@calpoly/mustang";
-            import {SportHeaderElement} from "/src/components/sport-header";
-          
-            define({ 
-              "mu-auth": Auth.Provider,
-              "sport-header": SportHeaderElement
-            });
-            window.relayEvent = Events.relay;
-          </script>
+    <script type="module">
+      import { relayEvent } from "/js/relay-event.js";
 
-    </head>
-    <body>
+      window.relayEvent = relayEvent;
+    </script>
+    <script type="module">
+      function toggleDarkMode(page, checked) {
+        page.classList.toggle("dark-mode", checked);
+      }
+
+      document.body.addEventListener("dark-mode", (event) =>
+        toggleDarkMode(event.currentTarget, event.detail.checked)
+      );
+    </script>
+
+    <!--JSON Object-->
+    <script type="module" src="/js/json-loader.js"></script>
+
+    <script type="module">
+      import { define, Auth } from "@calpoly/mustang";
+      import { SportHeaderElement } from "/src/components/sport-header";
+
+      define({
+        "mu-auth": Auth.Provider,
+        "sport-header": SportHeaderElement,
+      });
+      window.relayEvent = Events.relay;
+    </script>
+  </head>
+  <body>
+    <mu-history provides="blazing:history">
       <mu-auth provides="sport:auth" redirect="./login.html">
-        <!--<LoginFormElement></LoginFormElement>-->
-        <sport-header></sport-header>
-        <nav class="navbar">
-            <div class="navbar__container">
-              <a href="#home" class="title">NBA Odds</a>
-              <div class="nav__toggle">
-                <span class="nav__item"></span>
-                <span class="nav__item"></span>
-                <span class="nav__item"></span>
-                <span class="nav__item"></span>
-              </div>
-              <ul class="nav__list">
-                <li data-tab-target="#home" class="nav__tab">Home</li>
-                <li data-tab-target="#projected__awards" class="nav__tab">Projected Awards</li>
-                <li data-tab-target="#top__players" class="nav__tab">Top Players</li>
-                <li data-tab-target="#rising" class="nav__tab">On The Rise</li>
-              </ul>
-            
-            </div>
-        </nav>
-  
-        <div id="player__spotlight" class="player__spotlight__section">
-            <!--<img src="assets/nba__court.webp" alt="" class="nba__court">-->
-            <div class="spotlight__container">
-                <div class="spotlight__left__section">
-                    <h2 class="spotlight__title">Player Spotlight</h2>
-                    <h3 class="spotlight__name">LeBron James</h3>
-                    <h3 class="spotlight__position">SF, LA Lakers</h3>
-                    <div class="spotlight__stats">
-                        <p class="points__title">PPG</p>
-                        <p class="rebound__title">RPG</p>
-                        <p class="assists__title">APG</p>
-                        <p class="points">25.7</p>
-                        <p class="rebounds">7.3</p>
-                        <p class="assists">8.3</p>
-                    </div>
-                </div>
-                <div class="spotlight__right__section">
-                    <img src="assets/lebron__spotlight.png" alt="" class="spotlight__image">
-                </div>
-            </div>
-        </div>
-
-        <dd class="mvp__route">
-            <html-fragment href="awards/mvp.html">
-              <h3
-                ><a
-                  href="#player__spotlight"
-                  onclick="relayEvent(event, 'html-fragment:open')">
-                  Go back up
-                </a></h3
-              >
-            </html-fragment>
-          </dd>
-
-          <label
-          onchange="relayEvent(
-          event, 
-          'dark-mode', 
-          {checked: event.target.checked})">
-          <input type="checkbox" autocomplete="off" /> 
-          Dark Mode
-        </label>
-
-        <!--Testing Team Assortment Web Component (still in progress)-->
-        <template id="team-player-component-template">
-          <div class="team-player-container">
-            <h2 class="team-name"></h2>
-            <ul class="player-list"></ul>
-          </div>
-        </template>
-                
-        <!-- NBA teams  -->
-        <team-player team-name="LA Lakers" players='["LeBron James", "Anthony Davis", "Austin Reaves"]'></team-player>
-        <team-player team-name="Boston Celtics" players='["Jayson Tatum", "Jaylen Brown", "Derrick White"]'></team-player>
-        
-
-
-        </mu-auth>
-    </body>
+        <mu-store provides="sport:model">
+          <article class="page">
+            <sport-header></sport-header>
+            <mu-switch></mu-switch>
+          </article>
+        </mu-store>
+      </mu-auth>
+    </mu-history>
+  </body>
 </html>
