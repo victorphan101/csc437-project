@@ -10,7 +10,6 @@ as an example of a client-rendered web app for CSC 437.
 **Running the application**
     ``` 
     cd/packages/server
-
     ```
 
     ```
