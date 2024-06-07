@@ -7,3 +7,18 @@
 This repo contains the code for an the app, NBA Odds, used
 as an example of a client-rendered web app for CSC 437.
 
+**Running the application**
+    ``` 
+    cd/packages/server
+
+    ```
+
+    ```
+    npm install
+    ```
+    
+    then enter the following:
+
+    ```
+    npm run start:proto
+    ```
