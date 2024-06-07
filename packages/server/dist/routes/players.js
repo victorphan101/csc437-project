@@ -39,15 +39,19 @@ router.get("/:playerid", (req, res) => {
   import_player_svc.default.get(playerid).then((player) => res.json(player)).catch((err) => res.status(404).end());
 });
 router.post("/players", (req, res) => {
-  const newPlayer = req.body;
-  import_player_svc.default.create(newPlayer).then((player) => res.status(201).send(player)).catch((err) => res.status(500).send(err));
+  const newPlayer2 = req.body;
+  import_player_svc.default.create(newPlayer2).then((player) => res.status(201).send(player)).catch((err) => res.status(500).send(err));
 });
 router.get("/", (req, res) => {
   import_player_svc.default.index().then((list) => res.json(list)).catch((err) => res.status(500).send(err));
 });
 router.put("/:playerid", (req, res) => {
   const { playerid } = req.params;
-  const newPlayer = req.body;
-  import_player_svc.default.update(playerid, newPlayer).then((profile) => res.json(profile)).catch((err) => res.status(404).end());
+  const newPlayer2 = req.body;
+  import_player_svc.default.update(playerid, newPlayer2).then((profile) => res.json(profile)).catch((err) => res.status(404).end());
+});
+router.post("/", (req, res) => {
+  const newProfile = req.body;
+  import_player_svc.default.create(newPlayer).then((player) => res.status(201).send(player)).catch((err) => res.status(500).send(err));
 });
 var players_default = router;

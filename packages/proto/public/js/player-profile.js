@@ -53,8 +53,6 @@ export class PlayerProfileElement extends HTMLElement {
             <dd><slot name="team"></slot></dd>
             <dt>Position</dt>
             <dd><slot name="position"></slot></dd>
-            <dt>Height</dt>
-            <dd><slot name="height"></slot></dd>
           </dl>
           <button id="editButton">Edit</button>
         </div>

@@ -1,49 +1,49 @@
-import { Auth, History, Store, Switch, define, html } from "@calpoly/mustang";
-import { Msg } from "./messages";
-import { Model, init } from "./model";
-import update from "./update";
+import {
+  Auth,
+  History,
+  Switch,
+  define
+} from "@calpoly/mustang";
+import { html } from "lit";
 import { SportHeaderElement } from "./components/sport-header";
+import { PlayerViewElement } from "./views/player-view";
+
+const routes: Switch.Route[] = [
+  {
+    auth: "protected",
+    path: "/app/player/:id/edit",
+    view: (params: Switch.Params) => html`
+      <player-view edit user-id=${params.id}></player-view>
+    `
+  },
+  {
+    auth: "protected",
+    path: "/app/player/:id",
+    view: (params: Switch.Params) => html`
+      <player-view user-id=${params.id}></player-view>
+    `
+  },
+  {
+    auth: "protected",
+    path: "/app",
+    view: () => html`
+      <sport-header></sport-header>
+    `
+  },
+  {
+    path: "/",
+    redirect: "/app"
+  }
+];
 
 define({
   "mu-auth": Auth.Provider,
-  "mu-store": class AppStore extends Store.Provider<
-    Model,
-    Msg
-  > {
-    constructor() {
-      super(update, init, "sport:auth");
-    }
-  },
-  "sport-header": SportHeaderElement,
   "mu-history": History.Provider,
   "mu-switch": class AppSwitch extends Switch.Element {
     constructor() {
-      super(routes, "blazing:history");
+      super(routes, "sport:history", "sport:auth");
     }
   },
+  "sport-header": SportHeaderElement,
+  "player-view": PlayerViewElement,
 });
-
-const routes = [
-    {
-      path: "/app/tour/:id",
-      view: (params: Switch.Params) => html`
-        <tour-view tour-id=${params.id}></tour-view>
-      `
-    },
-    {
-      path: "/app/profile/:id",
-      view: (params: Switch.Params) => html`
-        <profile-view user-id=${params.id}></profile-view>
-      `
-    },
-    {
-      path: "/app",
-      view: () => html`
-        <landing-view></landing-view>
-      `
-    },
-    {
-      path: "/",
-      redirect: "/app"
-    }
-  ];

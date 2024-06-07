@@ -27,9 +27,7 @@ const PlayerSchema = new import_mongoose.Schema(
     playerid: { type: String, required: true },
     name: { type: String, required: true },
     position: { type: String, trim: true },
-    height: { type: String, trim: true },
-    team: { type: String },
-    teamColor: { type: String, trim: true }
+    team: { type: String }
   },
   { collection: "sports" }
 );

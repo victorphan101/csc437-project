@@ -34,6 +34,8 @@ export class SportHeaderElement extends LitElement {
       </div>
     `;
 
+    type Checkbox = HTMLInputElement & { checked: boolean };
+
     function toggleDarkMode(ev: InputEvent) {
       const target = ev.target as Checkbox;
       const checked = target.checked;

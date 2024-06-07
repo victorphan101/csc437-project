@@ -1,13 +1,13 @@
-import { Profile } from "server/models";
+import { Player } from "server/models";
 
 export type Msg =
+  | ["player/select", { userid: string }]
   | [
-    "profile/save",
+    "player/save",
     {
       userid: string;
-      profile: Profile;
+      player: Player;
       onSuccess?: () => void;
       onFailure?: (err: Error) => void;
     }
-  ]
-  
+  ];

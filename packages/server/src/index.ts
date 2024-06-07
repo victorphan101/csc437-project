@@ -5,12 +5,15 @@ import path from "path";
 import { connect } from "./services/mongo";
 import auth, { authenticateUser } from "./routes/auth";
 import fs from "node:fs/promises";
+import websockets from "./services/websockets";
+
 
 connect("sports");
 
 const app = express();
 const port = process.env.PORT || 3000;
 const staticDir = process.env.STATIC || "public";
+console.log("Serving static files from ", staticDir);
 
 
 app.use(express.static(staticDir));
@@ -29,10 +32,6 @@ app.get("/hello", (_: Request, res: Response) => {
   );
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
-
 // SPA Routes: /app/...
 app.use("/app", (req: Request, res: Response) => {
   const indexHtml = path.resolve(staticDir, "index.html");
@@ -47,3 +46,9 @@ const nodeModules = path.resolve(
 );
 console.log("Serving NPM packages from", nodeModules);
 app.use("/node_modules", express.static(nodeModules));
+
+const server = app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
+websockets(server);

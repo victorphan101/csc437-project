@@ -30,12 +30,11 @@
     </head>
     <body>
         <!--Player Profile View Template-->
-        <player-profile src="/api/players/">
+        <player-profile src="/api/player/">
             <span slot="name">LeBron James</span>
             <img slot="avatar" src="../assets/lebron__spotlight.png" />
             <span slot="team">LA Lakers</span>
             <span slot="position">SF</span>
-            <span slot="height">6'8</span>
         </player-profile>
 
         <mu-auth provides="sports:auth" redirect="../login.html">
@@ -56,20 +55,12 @@
               <input name="name" />
             </label>
             <label>
-              <span>Height</span>
-              <input name="height" />
-            </label>
-            <label>
               <span>Position</span>
               <input name="position" />
             </label>
             <label>
               <span>Team</span>
               <input name="team">
-            </label>
-            <label>
-              <span>Team Color</span>
-              <input type="color" name="team color" />
             </label>
             <button
               slot="delete"

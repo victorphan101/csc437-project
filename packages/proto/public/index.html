@@ -34,11 +34,12 @@
           <!--JSON Object-->
           <script type="module" src="/js/json-loader.js"></script>
 
+          <script src="js/tabs.js"></script>
+
     </head>
     <body>
 
-        <LoginFormElement></LoginFormElement>
-        <nav class="navbar">
+        <nav id="home" class="navbar">
             <div class="navbar__container">
               <a href="#home" class="title">NBA Odds</a>
               <div class="nav__toggle">
@@ -48,10 +49,19 @@
                 <span class="nav__item"></span>
               </div>
               <ul class="nav__list">
-                <li data-tab-target="#home" class="nav__tab">Home</li>
-                <li data-tab-target="#projected__awards" class="nav__tab">Projected Awards</li>
-                <li data-tab-target="#top__players" class="nav__tab">Top Players</li>
-                <li data-tab-target="#rising" class="nav__tab">On The Rise</li>
+                <li data-tab-target="mvp" class="nav__tab">Top Picks</li>
+                <li data-tab-target="dpoy" class="nav__tab">Defensive Players</li>
+                <li data-tab-target="roty" class="nav__tab">On The Rise</li>
+                <li data-tab-target="newUser" class="nav__tab">Sign Up</li>
+                <li><label
+                  onchange="relayEvent(
+                  event, 
+                  'dark-mode', 
+                  {checked: event.target.checked})">
+                  <input type="checkbox" autocomplete="off" /> 
+                  Dark Mode
+                </label>
+                </li>
               </ul>
             
             </div>
@@ -79,11 +89,14 @@
             </div>
         </div>
 
+        <div id="tab-content"></div>
+
+
         <dd class="mvp__route">
             <html-fragment href="awards/mvp.html">
               <h3
                 ><a
-                  href="#player__spotlight"
+                  href="#home"
                   onclick="relayEvent(event, 'html-fragment:open')">
                   Go back up
                 </a></h3
@@ -91,27 +104,19 @@
             </html-fragment>
           </dd>
 
-          <label
-          onchange="relayEvent(
-          event, 
-          'dark-mode', 
-          {checked: event.target.checked})">
-          <input type="checkbox" autocomplete="off" /> 
-          Dark Mode
-        </label>
-
+          
         <!--Testing Team Assortment Web Component (still in progress)-->
-        <template id="team-player-component-template">
+        <!--<template id="team-player-component-template">
           <div class="team-player-container">
             <h2 class="team-name"></h2>
             <ul class="player-list"></ul>
           </div>
         </template>
                 
-        <!-- NBA teams  -->
+         NBA teams  
         <team-player team-name="LA Lakers" players='["LeBron James", "Anthony Davis", "Austin Reaves"]'></team-player>
         <team-player team-name="Boston Celtics" players='["Jayson Tatum", "Jaylen Brown", "Derrick White"]'></team-player>
-        
+      -->
 
 
 

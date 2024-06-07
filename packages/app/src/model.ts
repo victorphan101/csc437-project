@@ -1,8 +1,7 @@
-import { Profile, Tour } from "server/models";
+import { Player  } from "server/models";
 
 export interface Model {
-  tour?: Tour;
-  profile?: Profile;
+  player?: Player;
 }
 
 export const init: Model = {};

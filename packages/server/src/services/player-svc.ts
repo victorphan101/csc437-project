@@ -1,4 +1,3 @@
-// src/services/profile-svc.ts
 import { Schema, Model, Document, model } from "mongoose";
 import { Player } from "../models/player";
 
@@ -7,9 +6,7 @@ const PlayerSchema = new Schema<Player>(
     playerid: { type: String, required: true},
     name: { type: String, required: true},
     position: { type: String, trim: true},
-    height: { type: String, trim: true },
     team: { type: String},
-    teamColor: { type: String, trim: true },
   },
   { collection: "sports" }
 );

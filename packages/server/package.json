@@ -2,17 +2,21 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "cross-env STATIC=../proto/public npx nodemon",
+    "dev": "nodemon",
     "build": "npx etsc",
     "start": "npm run build && npm run start:node",
     "start:api": "cross-env STATIC=./public npm run start",
-    "start:app": "cross-env STATIC=../app/dist npm run start",
+    "start:app": "cross-env STATIC=../app npm run start",
     "start:node": "node dist/index.js",
     "start:proto": "cross-env STATIC=../proto/public npm run start",
     "check": "tsc --noEmit"
   },
+  "keywords": [
+    "express",
+    "backend"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -32,7 +36,8 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.6.2",
-    "mongoose": "^8.3.5"
+    "mongoose": "^8.3.5",
+    "ws": "^8.17.0"
   },
   "exports": {
     "./models": {
