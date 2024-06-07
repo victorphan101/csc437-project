@@ -9,7 +9,13 @@ as an example of a client-rendered web app for CSC 437.
 
 **Running the application**\
     ``` 
-    cd/packages/server\
-    npm install\
+    cd/packages/server
+    ```
+    \
+    ```
+    npm install
+    ```
+    \
+    ```
     npm run start:proto
     ```
